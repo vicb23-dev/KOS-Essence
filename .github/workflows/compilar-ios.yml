@@ -31,13 +31,13 @@ jobs:
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             build
-
+            
       - name: Crear IPA
         run: |
           mkdir -p Payload
           cp -R build/Build/Products/Release-iphoneos/KOS_Essence.app Payload/
-          cd Payload
-          zip -r ../KOS-Essence.ipa KOS_Essence.app
+          zip -r KOS-Essence.ipa Payload
+
 
       - name: Guardar IPA
         uses: actions/upload-artifact@v4
