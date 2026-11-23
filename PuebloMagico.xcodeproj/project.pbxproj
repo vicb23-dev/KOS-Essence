@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC722FD0307FF0B800047974 /* PuebloMagicoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC722FCF307FF0B800047974 /* PuebloMagicoApp.swift */; };
+		AC722FD2307FF0B800047974 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC722FD1307FF0B800047974 /* ContentView.swift */; };
+		AC722FD4307FF0BD00047974 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC722FD3307FF0BD00047974 /* Assets.xcassets */; };
+		AC722FD7307FF0BD00047974 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC722FD6307FF0BD00047974 /* Preview Assets.xcassets */; };
+		AC722FE1307FF0BD00047974 /* PuebloMagicoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC722FE0307FF0BD00047974 /* PuebloMagicoTests.swift */; };
+		AC722FEB307FF0BD00047974 /* PuebloMagicoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC722FEA307FF0BD00047974 /* PuebloMagicoUITests.swift */; };
+		AC722FED307FF0BD00047974 /* PuebloMagicoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC722FEC307FF0BD00047974 /* PuebloMagicoUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC722FDD307FF0BD00047974 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC722FC4307FF0B700047974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC722FCB307FF0B700047974;
+			remoteInfo = PuebloMagico;
+		};
+		AC722FE7307FF0BD00047974 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC722FC4307FF0B700047974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC722FCB307FF0B700047974;
+			remoteInfo = PuebloMagico;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AC722FCC307FF0B700047974 /* PuebloMagico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PuebloMagico.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC722FCF307FF0B800047974 /* PuebloMagicoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuebloMagicoApp.swift; sourceTree = "<group>"; };
+		AC722FD1307FF0B800047974 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AC722FD3307FF0BD00047974 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC722FD6307FF0BD00047974 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AC722FDC307FF0BD00047974 /* PuebloMagicoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuebloMagicoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC722FE0307FF0BD00047974 /* PuebloMagicoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuebloMagicoTests.swift; sourceTree = "<group>"; };
+		AC722FE6307FF0BD00047974 /* PuebloMagicoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PuebloMagicoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC722FEA307FF0BD00047974 /* PuebloMagicoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuebloMagicoUITests.swift; sourceTree = "<group>"; };
+		AC722FEC307FF0BD00047974 /* PuebloMagicoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuebloMagicoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC722FC9307FF0B700047974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC722FD9307FF0BD00047974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC722FE3307FF0BD00047974 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC722FC3307FF0B700047974 = {
+			isa = PBXGroup;
+			children = (
+				AC722FCE307FF0B700047974 /* PuebloMagico */,
+				AC722FDF307FF0BD00047974 /* PuebloMagicoTests */,
+				AC722FE9307FF0BD00047974 /* PuebloMagicoUITests */,
+				AC722FCD307FF0B700047974 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC722FCD307FF0B700047974 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC722FCC307FF0B700047974 /* PuebloMagico.app */,
+				AC722FDC307FF0BD00047974 /* PuebloMagicoTests.xctest */,
+				AC722FE6307FF0BD00047974 /* PuebloMagicoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC722FCE307FF0B700047974 /* PuebloMagico */ = {
+			isa = PBXGroup;
+			children = (
+				AC722FCF307FF0B800047974 /* PuebloMagicoApp.swift */,
+				AC722FD1307FF0B800047974 /* ContentView.swift */,
+				AC722FD3307FF0BD00047974 /* Assets.xcassets */,
+				AC722FD5307FF0BD00047974 /* Preview Content */,
+			);
+			path = PuebloMagico;
+			sourceTree = "<group>";
+		};
+		AC722FD5307FF0BD00047974 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AC722FD6307FF0BD00047974 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC722FDF307FF0BD00047974 /* PuebloMagicoTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC722FE0307FF0BD00047974 /* PuebloMagicoTests.swift */,
+			);
+			path = PuebloMagicoTests;
+			sourceTree = "<group>";
+		};
+		AC722FE9307FF0BD00047974 /* PuebloMagicoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC722FEA307FF0BD00047974 /* PuebloMagicoUITests.swift */,
+				AC722FEC307FF0BD00047974 /* PuebloMagicoUITestsLaunchTests.swift */,
+			);
+			path = PuebloMagicoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC722FCB307FF0B700047974 /* PuebloMagico */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC722FF0307FF0BD00047974 /* Build configuration list for PBXNativeTarget "PuebloMagico" */;
+			buildPhases = (
+				AC722FC8307FF0B700047974 /* Sources */,
+				AC722FC9307FF0B700047974 /* Frameworks */,
+				AC722FCA307FF0B700047974 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PuebloMagico;
+			productName = PuebloMagico;
+			productReference = AC722FCC307FF0B700047974 /* PuebloMagico.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC722FDB307FF0BD00047974 /* PuebloMagicoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC722FF3307FF0BD00047974 /* Build configuration list for PBXNativeTarget "PuebloMagicoTests" */;
+			buildPhases = (
+				AC722FD8307FF0BD00047974 /* Sources */,
+				AC722FD9307FF0BD00047974 /* Frameworks */,
+				AC722FDA307FF0BD00047974 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC722FDE307FF0BD00047974 /* PBXTargetDependency */,
+			);
+			name = PuebloMagicoTests;
+			productName = PuebloMagicoTests;
+			productReference = AC722FDC307FF0BD00047974 /* PuebloMagicoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC722FE5307FF0BD00047974 /* PuebloMagicoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC722FF6307FF0BD00047974 /* Build configuration list for PBXNativeTarget "PuebloMagicoUITests" */;
+			buildPhases = (
+				AC722FE2307FF0BD00047974 /* Sources */,
+				AC722FE3307FF0BD00047974 /* Frameworks */,
+				AC722FE4307FF0BD00047974 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC722FE8307FF0BD00047974 /* PBXTargetDependency */,
+			);
+			name = PuebloMagicoUITests;
+			productName = PuebloMagicoUITests;
+			productReference = AC722FE6307FF0BD00047974 /* PuebloMagicoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC722FC4307FF0B700047974 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					AC722FCB307FF0B700047974 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					AC722FDB307FF0BD00047974 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = AC722FCB307FF0B700047974;
+					};
+					AC722FE5307FF0BD00047974 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = AC722FCB307FF0B700047974;
+					};
+				};
+			};
+			buildConfigurationList = AC722FC7307FF0B700047974 /* Build configuration list for PBXProject "PuebloMagico" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC722FC3307FF0B700047974;
+			productRefGroup = AC722FCD307FF0B700047974 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC722FCB307FF0B700047974 /* PuebloMagico */,
+				AC722FDB307FF0BD00047974 /* PuebloMagicoTests */,
+				AC722FE5307FF0BD00047974 /* PuebloMagicoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC722FCA307FF0B700047974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC722FD7307FF0BD00047974 /* Preview Assets.xcassets in Resources */,
+				AC722FD4307FF0BD00047974 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC722FDA307FF0BD00047974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC722FE4307FF0BD00047974 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC722FC8307FF0B700047974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC722FD2307FF0B800047974 /* ContentView.swift in Sources */,
+				AC722FD0307FF0B800047974 /* PuebloMagicoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC722FD8307FF0BD00047974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC722FE1307FF0BD00047974 /* PuebloMagicoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC722FE2307FF0BD00047974 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC722FEB307FF0BD00047974 /* PuebloMagicoUITests.swift in Sources */,
+				AC722FED307FF0BD00047974 /* PuebloMagicoUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC722FDE307FF0BD00047974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC722FCB307FF0B700047974 /* PuebloMagico */;
+			targetProxy = AC722FDD307FF0BD00047974 /* PBXContainerItemProxy */;
+		};
+		AC722FE8307FF0BD00047974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC722FCB307FF0B700047974 /* PuebloMagico */;
+			targetProxy = AC722FE7307FF0BD00047974 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AC722FEE307FF0BD00047974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC722FEF307FF0BD00047974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC722FF1307FF0BD00047974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PuebloMagico/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "KOS Essence";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vicb23.KOSEssence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC722FF2307FF0BD00047974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PuebloMagico/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "KOS Essence";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vicb23.KOSEssence;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AC722FF4307FF0BD00047974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tec.PuebloMagicoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PuebloMagico.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PuebloMagico";
+			};
+			name = Debug;
+		};
+		AC722FF5307FF0BD00047974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tec.PuebloMagicoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PuebloMagico.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PuebloMagico";
+			};
+			name = Release;
+		};
+		AC722FF7307FF0BD00047974 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tec.PuebloMagicoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PuebloMagico;
+			};
+			name = Debug;
+		};
+		AC722FF8307FF0BD00047974 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tec.PuebloMagicoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PuebloMagico;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC722FC7307FF0B700047974 /* Build configuration list for PBXProject "PuebloMagico" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC722FEE307FF0BD00047974 /* Debug */,
+				AC722FEF307FF0BD00047974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC722FF0307FF0BD00047974 /* Build configuration list for PBXNativeTarget "PuebloMagico" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC722FF1307FF0BD00047974 /* Debug */,
+				AC722FF2307FF0BD00047974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC722FF3307FF0BD00047974 /* Build configuration list for PBXNativeTarget "PuebloMagicoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC722FF4307FF0BD00047974 /* Debug */,
+				AC722FF5307FF0BD00047974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC722FF6307FF0BD00047974 /* Build configuration list for PBXNativeTarget "PuebloMagicoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC722FF7307FF0BD00047974 /* Debug */,
+				AC722FF8307FF0BD00047974 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC722FC4307FF0B700047974 /* Project object */;
+}

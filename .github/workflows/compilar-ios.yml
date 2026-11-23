@@ -1,0 +1,42 @@
+name: Compilar KOS Essence para iOS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Mostrar versiones
+        run: xcodebuild -version
+
+      - name: Compilar aplicación para iPhone
+        run: |
+          xcodebuild \
+            -project PuebloMagico.xcodeproj \
+            -scheme PuebloMagico \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Crear archivo IPA sin firmar
+        run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/PuebloMagico.app Payload/
+          /usr/bin/zip -r KOS-Essence.ipa Payload
+
+      - name: Guardar IPA como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: KOS-Essence-IPA
+          path: KOS-Essence.ipa
+          if-no-files-found: error
+          retention-days: 7
