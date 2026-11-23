@@ -2,7 +2,7 @@ import SwiftUI
 import UIKit
 
 // Cambia aquí el nombre de la app
-private let appName = "Kos Records"
+private let appName = "KOS Records"
 
 // MARK: - Paleta
 private enum KOSPalette {
@@ -25,6 +25,9 @@ private let featuredSongs = [
     "Belladona"
 ]
 
+// Imágenes del carrusel de la pantalla principal (nombres en Assets)
+private let heroImages = ["kos_principal", "chaos_essence"]
+
 private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
     case trayectoria, musica, essence, canciones
 
@@ -34,7 +37,7 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .trayectoria: return "Trayectoria"
         case .musica: return "Música"
-        case .essence: return "Chaos Essence"
+        case .essence: return "KOS Essence"
         case .canciones: return "Canciones destacadas"
         }
     }
@@ -61,7 +64,7 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .trayectoria:
             return [
-                "Kenyaos comenzó compartiendo contenido en 2018 y poco a poco fue construyendo una comunidad.",
+                "Kenia OS comenzó compartiendo contenido en 2018 y poco a poco fue construyendo una comunidad.",
                 "En 2021 consolidó su camino artístico en la música y conectó con nuevos públicos.",
                 "En 2022 presentó Cambios de Luna, una etapa importante dentro de su discografía, y en 2024 llegó Pink Aura, con una identidad visual y musical llena de personalidad."
             ]
@@ -73,7 +76,7 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         case .essence:
             // Edita estos textos con la información real de la marca
             return [
-                "Chaos Essence es la marca de perfumes de Kenyaos.",
+                "KOS Essence es la marca de perfumes de Kenia OS.",
                 "Es una extensión de su universo: la misma personalidad y elegancia, ahora en forma de fragancia."
             ]
         case .canciones:
@@ -91,16 +94,33 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             HomeView()
-                .navigationTitle("Conoce a Kenyaos")
+                .navigationTitle("Conoce a Kenia OS")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(KOSPalette.ivory, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
                 .navigationDestination(for: KOSSection.self) { section in
-                    DetailView(section: section) { path.removeAll() }
+                    SectionPager(start: section) { path.removeAll() }
                 }
         }
         .tint(KOSPalette.wine)
         .preferredColorScheme(.light)
+    }
+}
+
+// MARK: - Puntitos indicadores
+private struct PageDots: View {
+    let count: Int
+    let current: Int
+
+    var body: some View {
+        HStack(spacing: 8) {
+            ForEach(0..<count, id: \.self) { i in
+                Capsule()
+                    .fill(i == current ? KOSPalette.gold : KOSPalette.gold.opacity(0.3))
+                    .frame(width: i == current ? 26 : 7, height: 7)
+            }
+        }
+        .animation(.easeInOut(duration: 0.25), value: current)
     }
 }
 
@@ -121,7 +141,7 @@ private struct HomeView: View {
                 }
                 .padding(.top, 8)
 
-                HeroImage()
+                HeroCarousel()
 
                 Text("Selecciona lo que deseas conocer")
                     .font(.system(size: 16, weight: .bold))
@@ -152,19 +172,40 @@ private struct HomeView: View {
                 .padding(.bottom, 20)
             }
         }
+        .scrollIndicators(.hidden)
         .background(KOSPalette.ivory.ignoresSafeArea())
     }
 }
 
-// MARK: - Imagen principal
-// Usa la imagen "kos_principal" de Assets; si no existe, muestra un degradado
-private struct HeroImage: View {
+// MARK: - Carrusel de imágenes (se desliza de lado)
+private struct HeroCarousel: View {
+    @State private var index = 0
+
+    var body: some View {
+        VStack(spacing: 10) {
+            TabView(selection: $index) {
+                ForEach(heroImages.indices, id: \.self) { i in
+                    HeroSlide(imageName: heroImages[i])
+                        .tag(i)
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(height: 350)
+
+            PageDots(count: heroImages.count, current: index)
+        }
+    }
+}
+
+// Usa la imagen de Assets; si no existe, muestra un degradado
+private struct HeroSlide: View {
+    let imageName: String
+
     var body: some View {
         Color.clear
-            .frame(height: 350)
             .overlay {
-                if UIImage(named: "kos_principal") != nil {
-                    Image("kos_principal")
+                if UIImage(named: imageName) != nil {
+                    Image(imageName)
                         .resizable()
                         .scaledToFill()
                 } else {
@@ -178,8 +219,45 @@ private struct HeroImage: View {
     }
 }
 
-// MARK: - Detalle
-private struct DetailView: View {
+// MARK: - Secciones con deslizamiento lateral
+private struct SectionPager: View {
+    @State private var selected: KOSSection
+    let goHome: () -> Void
+
+    init(start: KOSSection, goHome: @escaping () -> Void) {
+        _selected = State(initialValue: start)
+        self.goHome = goHome
+    }
+
+    private var currentIndex: Int {
+        KOSSection.allCases.firstIndex(of: selected) ?? 0
+    }
+
+    var body: some View {
+        VStack(spacing: 8) {
+            PageDots(count: KOSSection.allCases.count, current: currentIndex)
+                .padding(.top, 10)
+
+            Text("Desliza hacia los lados para ver más")
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(KOSPalette.rosewood)
+
+            TabView(selection: $selected) {
+                ForEach(KOSSection.allCases) { section in
+                    SectionPage(section: section, goHome: goHome)
+                        .tag(section)
+                }
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+        }
+        .background(Color.white.ignoresSafeArea())
+        .navigationTitle(selected.title)
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Contenido de cada sección
+private struct SectionPage: View {
     let section: KOSSection
     let goHome: () -> Void
 
@@ -189,7 +267,7 @@ private struct DetailView: View {
                 Image(systemName: section.symbol)
                     .font(.system(size: 64, weight: .light))
                     .foregroundStyle(section.color)
-                    .padding(.top, 24)
+                    .padding(.top, 16)
 
                 Text(section.title)
                     .font(.system(size: 34, weight: .bold, design: .serif))
@@ -232,9 +310,7 @@ private struct DetailView: View {
                 .padding(.vertical, 20)
             }
         }
-        .background(Color.white.ignoresSafeArea())
-        .navigationTitle(section.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -286,7 +362,7 @@ private struct PerfumeCard: View {
                         .font(.system(size: 54, weight: .ultraLight))
                         .foregroundStyle(KOSPalette.champagne)
                     Rectangle().fill(KOSPalette.gold).frame(width: 60, height: 1)
-                    Text("CHAOS ESSENCE")
+                    Text("KOS ESSENCE")
                         .font(.system(size: 16, weight: .medium, design: .serif))
                         .tracking(5)
                         .foregroundStyle(KOSPalette.champagne)
