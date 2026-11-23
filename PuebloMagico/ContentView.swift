@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import MapKit
 
 // Cambia aquí el nombre de la app
 private let appName = "KOS Records"
@@ -29,13 +30,14 @@ private let featuredSongs = [
 private let heroImages = ["kos_principal", "chaos_essence"]
 
 private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
-    case trayectoria, musica, essence, canciones
+    case trayectoria, ubicacion, musica, essence, canciones
 
     var id: String { rawValue }
 
     var title: String {
         switch self {
         case .trayectoria: return "Trayectoria"
+        case .ubicacion: return "Ubicación"
         case .musica: return "Música"
         case .essence: return "KOS Essence"
         case .canciones: return "Canciones destacadas"
@@ -45,6 +47,7 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
     var symbol: String {
         switch self {
         case .trayectoria: return "book"
+        case .ubicacion: return "map"
         case .musica: return "music.note"
         case .essence: return "drop.fill"
         case .canciones: return "heart.fill"
@@ -54,6 +57,7 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
     var color: Color {
         switch self {
         case .trayectoria: return KOSPalette.wine
+        case .ubicacion: return KOSPalette.ink
         case .musica: return KOSPalette.burgundy
         case .essence: return KOSPalette.rosewood
         case .canciones: return KOSPalette.gold
@@ -67,6 +71,10 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
                 "Kenia OS comenzó compartiendo contenido en 2018 y poco a poco fue construyendo una comunidad.",
                 "En 2021 consolidó su camino artístico en la música y conectó con nuevos públicos.",
                 "En 2022 presentó Cambios de Luna, una etapa importante dentro de su discografía, y en 2024 llegó Pink Aura, con una identidad visual y musical llena de personalidad."
+            ]
+        case .ubicacion:
+            return [
+                "Kenia OS nació el 15 de julio de 1999 en Mazatlán, Sinaloa, México."
             ]
         case .musica:
             return [
@@ -151,20 +159,9 @@ private struct HomeView: View {
                 VStack(spacing: 10) {
                     ForEach(KOSSection.allCases) { section in
                         NavigationLink(value: section) {
-                            HStack(spacing: 14) {
-                                Image(systemName: section.symbol)
-                                    .font(.system(size: 18, weight: .medium))
-                                    .frame(width: 28)
-                                Text(section.title)
-                                    .font(.system(size: 17, weight: .semibold))
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.system(size: 15, weight: .semibold))
-                            }
-                            .foregroundStyle(.white)
-                            .padding(.horizontal, 16)
-                            .frame(height: 52)
-                            .background(section.color, in: RoundedRectangle(cornerRadius: 14))
+                            BotonMenu(titulo: section.title,
+                                      simbolo: section.symbol,
+                                      color: section.color)
                         }
                     }
                 }
@@ -174,6 +171,51 @@ private struct HomeView: View {
         }
         .scrollIndicators(.hidden)
         .background(KOSPalette.ivory.ignoresSafeArea())
+    }
+}
+
+// MARK: - Botón del menú (diseño)
+private struct BotonMenu: View {
+    let titulo: String
+    let simbolo: String
+    let color: Color
+
+    var body: some View {
+        HStack(spacing: 14) {
+            Image(systemName: simbolo)
+                .font(.system(size: 18, weight: .medium))
+                .frame(width: 28)
+            Text(titulo)
+                .font(.system(size: 17, weight: .semibold))
+            Spacer()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 15, weight: .semibold))
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 16)
+        .frame(height: 52)
+        .background(color, in: RoundedRectangle(cornerRadius: 14))
+    }
+}
+
+// MARK: - Botón regresar
+private struct BotonRegresar: View {
+    let accion: () -> Void
+
+    var body: some View {
+        Button(action: accion) {
+            HStack(spacing: 10) {
+                Image(systemName: "arrow.left")
+                Text("Regresar al inicio")
+            }
+            .font(.system(size: 16, weight: .medium))
+            .foregroundStyle(KOSPalette.ink)
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(KOSPalette.ink.opacity(0.6), lineWidth: 1))
+        }
+        .padding(.horizontal, 40)
+        .padding(.vertical, 20)
     }
 }
 
@@ -244,7 +286,7 @@ private struct SectionPager: View {
 
             TabView(selection: $selected) {
                 ForEach(KOSSection.allCases) { section in
-                    SectionPage(section: section, goHome: goHome)
+                    SeccionView(section: section, goHome: goHome)
                         .tag(section)
                 }
             }
@@ -256,33 +298,74 @@ private struct SectionPager: View {
     }
 }
 
-// MARK: - Contenido de cada sección
-private struct SectionPage: View {
+// MARK: - Cada sección usa la misma pantalla informativa
+private struct SeccionView: View {
     let section: KOSSection
     let goHome: () -> Void
 
     var body: some View {
+        switch section {
+        case .ubicacion:
+            PantallaInformativa(titulo: section.title,
+                                simbolo: section.symbol,
+                                color: section.color,
+                                contenido: section.paragraphs,
+                                goHome: goHome,
+                                abajo: AnyView(MapaMazatlan()))
+        case .essence:
+            PantallaInformativa(titulo: section.title,
+                                simbolo: section.symbol,
+                                color: section.color,
+                                contenido: section.paragraphs,
+                                goHome: goHome,
+                                arriba: AnyView(PerfumeCard()))
+        case .canciones:
+            PantallaInformativa(titulo: section.title,
+                                simbolo: section.symbol,
+                                color: section.color,
+                                contenido: section.paragraphs,
+                                goHome: goHome,
+                                abajo: AnyView(SongList()))
+        default:
+            PantallaInformativa(titulo: section.title,
+                                simbolo: section.symbol,
+                                color: section.color,
+                                contenido: section.paragraphs,
+                                goHome: goHome)
+        }
+    }
+}
+
+// MARK: - Pantalla informativa
+private struct PantallaInformativa: View {
+    let titulo: String
+    let simbolo: String
+    let color: Color
+    let contenido: [String]
+    let goHome: () -> Void
+    var arriba: AnyView = AnyView(EmptyView())
+    var abajo: AnyView = AnyView(EmptyView())
+
+    var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                Image(systemName: section.symbol)
+                Image(systemName: simbolo)
                     .font(.system(size: 64, weight: .light))
-                    .foregroundStyle(section.color)
+                    .foregroundStyle(color)
                     .padding(.top, 16)
 
-                Text(section.title)
+                Text(titulo)
                     .font(.system(size: 34, weight: .bold, design: .serif))
                     .foregroundStyle(KOSPalette.ink)
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.7)
                     .padding(.horizontal, 24)
 
-                if section == .essence {
-                    PerfumeCard()
-                }
+                arriba
 
                 VStack(alignment: .leading, spacing: 14) {
-                    ForEach(section.paragraphs, id: \.self) { text in
-                        Text(text)
+                    ForEach(contenido, id: \.self) { texto in
+                        Text(texto)
                             .font(.system(size: 16))
                             .foregroundStyle(KOSPalette.ink)
                             .fixedSize(horizontal: false, vertical: true)
@@ -291,26 +374,39 @@ private struct SectionPage: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 4)
 
-                if section == .canciones {
-                    SongList()
-                }
+                abajo
 
-                Button(action: goHome) {
-                    HStack(spacing: 10) {
-                        Image(systemName: "arrow.left")
-                        Text("Regresar al inicio")
-                    }
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundStyle(KOSPalette.ink)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 48)
-                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(KOSPalette.ink.opacity(0.6), lineWidth: 1))
-                }
-                .padding(.horizontal, 40)
-                .padding(.vertical, 20)
+                BotonRegresar(accion: goHome)
             }
         }
         .scrollIndicators(.hidden)
+    }
+}
+
+// MARK: - Mapa de ubicación (Mazatlán, Sinaloa)
+private struct MapaMazatlan: View {
+    private let coordenada = CLLocationCoordinate2D(
+        latitude: 23.2494,
+        longitude: -106.4111
+    )
+
+    var body: some View {
+        Map(
+            initialPosition: .region(
+                MKCoordinateRegion(
+                    center: coordenada,
+                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                )
+            ),
+            interactionModes: []
+        ) {
+            Marker("Mazatlán, Sinaloa", coordinate: coordenada)
+                .tint(KOSPalette.wine)
+        }
+        .frame(height: 300)
+        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .overlay(RoundedRectangle(cornerRadius: 18).stroke(KOSPalette.gold.opacity(0.6), lineWidth: 1))
+        .padding(.horizontal, 24)
     }
 }
 
