@@ -15,6 +15,11 @@ jobs:
       - name: Mostrar versiones
         run: xcodebuild -version
 
+      - name: Seleccionar Xcode 26.2
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_26.2.app/Contents/Developer
+          xcodebuild -version
+
       - name: Compilar aplicación para iPhone
         run: |
           xcodebuild \
