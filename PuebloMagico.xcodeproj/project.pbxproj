@@ -424,6 +424,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PuebloMagico/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PuebloMagico/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "KOS Essence";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,6 +454,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PuebloMagico/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PuebloMagico/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "KOS Essence";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
