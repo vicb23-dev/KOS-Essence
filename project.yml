@@ -1,0 +1,25 @@
+
+name: KOS_Essence
+
+options:
+  bundleIdPrefix: com.vicb23
+  deploymentTarget:
+    iOS: "17.0"
+
+targets:
+  KOS_Essence:
+    type: application
+    platform: iOS
+    sources:
+      - path: PuebloMagico
+        excludes:
+          - "Preview Content/**"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.vicb23.kosessence
+        PRODUCT_NAME: KOS_Essence
+        INFOPLIST_KEY_CFBundleDisplayName: KOS Essence
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"

@@ -2,9 +2,9 @@
 name: Compilar KOS Essence para iOS
 
 on:
-  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,30 +14,30 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
-      - name: Seleccionar Xcode
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
-          xcodebuild -version
-          xcodebuild -list -project PuebloMagico.xcodeproj
+      - name: Instalar XcodeGen
+        run: brew install xcodegen
 
-      - name: Compilar aplicación
+      - name: Generar proyecto Xcode limpio
+        run: xcodegen generate --spec project.yml
+
+      - name: Compilar KOS Essence
         run: |
           xcodebuild \
-            -project PuebloMagico.xcodeproj \
-            -scheme PuebloMagico \
+            -project KOS_Essence.xcodeproj \
+            -scheme KOS_Essence \
             -configuration Release \
             -sdk iphoneos \
             -destination 'generic/platform=iOS' \
             -derivedDataPath build \
-            -jobs 2 \
             CODE_SIGNING_ALLOWED=NO \
             build
 
       - name: Crear IPA
         run: |
           mkdir -p Payload
-          cp -R build/Build/Products/Release-iphoneos/PuebloMagico.app Payload/
-          /usr/bin/zip -r KOS-Essence.ipa Payload
+          cp -R build/Build/Products/Release-iphoneos/KOS_Essence.app Payload/
+          cd Payload
+          zip -r ../KOS-Essence.ipa KOS_Essence.app
 
       - name: Guardar IPA
         uses: actions/upload-artifact@v4
