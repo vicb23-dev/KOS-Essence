@@ -102,7 +102,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack(path: $path) {
             HomeView()
-                .navigationTitle("Conoce a Kenia OS")
+                .navigationTitle("KOS by Mia 23130050")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(KOSPalette.ivory, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
