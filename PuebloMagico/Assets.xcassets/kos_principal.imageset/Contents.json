@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "kos_principal.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

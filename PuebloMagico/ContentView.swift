@@ -1,7 +1,10 @@
-
 import SwiftUI
+import UIKit
 
-// MARK: - Paleta KOS Essence
+// Cambia aquí el nombre de la app
+private let appName = "Kos Records"
+
+// MARK: - Paleta
 private enum KOSPalette {
     static let wine = Color(red: 0.31, green: 0.08, blue: 0.16)
     static let burgundy = Color(red: 0.40, green: 0.13, blue: 0.20)
@@ -12,9 +15,18 @@ private enum KOSPalette {
     static let ink = Color(red: 0.16, green: 0.10, blue: 0.10)
 }
 
-// MARK: - Secciones
+// MARK: - Datos
+private let featuredSongs = [
+    "Días tristes",
+    "La invitación",
+    "Tú y yo por siempre",
+    "Flores",
+    "Love U",
+    "Belladona"
+]
+
 private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
-    case trayectoria, musica, estilo, curiosidades
+    case trayectoria, musica, essence, canciones
 
     var id: String { rawValue }
 
@@ -22,8 +34,8 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .trayectoria: return "Trayectoria"
         case .musica: return "Música"
-        case .estilo: return "Estilo"
-        case .curiosidades: return "Cosas destacadas"
+        case .essence: return "Chaos Essence"
+        case .canciones: return "Canciones destacadas"
         }
     }
 
@@ -31,8 +43,8 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .trayectoria: return "book"
         case .musica: return "music.note"
-        case .estilo: return "camera.macro"
-        case .curiosidades: return "sparkles"
+        case .essence: return "drop.fill"
+        case .canciones: return "heart.fill"
         }
     }
 
@@ -40,8 +52,8 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .trayectoria: return KOSPalette.wine
         case .musica: return KOSPalette.burgundy
-        case .estilo: return KOSPalette.rosewood
-        case .curiosidades: return KOSPalette.gold
+        case .essence: return KOSPalette.rosewood
+        case .canciones: return KOSPalette.gold
         }
     }
 
@@ -49,7 +61,7 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
         switch self {
         case .trayectoria:
             return [
-                "Kenia OS comenzó compartiendo contenido en 2018 y poco a poco fue construyendo una comunidad.",
+                "Kenyaos comenzó compartiendo contenido en 2018 y poco a poco fue construyendo una comunidad.",
                 "En 2021 consolidó su camino artístico en la música y conectó con nuevos públicos.",
                 "En 2022 presentó Cambios de Luna, una etapa importante dentro de su discografía, y en 2024 llegó Pink Aura, con una identidad visual y musical llena de personalidad."
             ]
@@ -58,24 +70,18 @@ private enum KOSSection: String, CaseIterable, Identifiable, Hashable {
                 "Su discografía está formada por Cambios de Luna (2022), K23 (2023), Pink Aura (2024) y K de Karma (2025).",
                 "Cada álbum representa una etapa distinta: una nueva etapa, un universo propio, energía y personalidad, y una nueva era."
             ]
-        case .estilo:
+        case .essence:
+            // Edita estos textos con la información real de la marca
             return [
-                "La estética de KOS Essence se inspira en tonos vino, dorado y champagne, que transmiten elegancia y personalidad.",
-                "Los conceptos Glow, Iconic y Essence resumen un estilo que busca brillar e inspirar."
+                "Chaos Essence es la marca de perfumes de Kenyaos.",
+                "Es una extensión de su universo: la misma personalidad y elegancia, ahora en forma de fragancia."
             ]
-        case .curiosidades:
+        case .canciones:
             return [
-                "KOS Essence es un proyecto escolar inspirado en el universo artístico de Kenia OS.",
-                "Reúne música, estilo y evolución en una sola experiencia para explorar desde el iPhone."
+                "Estas son algunas de las canciones más especiales de su música."
             ]
         }
     }
-}
-
-private struct Tile: Identifiable {
-    let id = UUID()
-    let symbol: String
-    let colors: [Color]
 }
 
 // MARK: - Vista raíz
@@ -83,24 +89,15 @@ struct ContentView: View {
     @State private var path: [KOSSection] = []
 
     var body: some View {
-        ZStack {
-            // Fondo que cubre toda la pantalla
-            KOSPalette.ivory
-                .ignoresSafeArea()
-
-            NavigationStack(path: $path) {
-                HomeView()
-                    .navigationTitle("Explora KOS")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(KOSPalette.ivory, for: .navigationBar)
-                    .toolbarBackground(.visible, for: .navigationBar)
-                    .navigationDestination(for: KOSSection.self) { section in
-                        DetailView(section: section) {
-                            path.removeAll()
-                        }
-                    }
-            }
-            .background(KOSPalette.ivory.ignoresSafeArea())
+        NavigationStack(path: $path) {
+            HomeView()
+                .navigationTitle("Conoce a Kenyaos")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(KOSPalette.ivory, for: .navigationBar)
+                .toolbarBackground(.visible, for: .navigationBar)
+                .navigationDestination(for: KOSSection.self) { section in
+                    DetailView(section: section) { path.removeAll() }
+                }
         }
         .tint(KOSPalette.wine)
         .preferredColorScheme(.light)
@@ -109,59 +106,22 @@ struct ContentView: View {
 
 // MARK: - Pantalla principal
 private struct HomeView: View {
-    private let tiles: [Tile] = [
-        Tile(symbol: "moon.stars.fill", colors: [KOSPalette.wine, KOSPalette.rosewood]),
-        Tile(symbol: "sparkles", colors: [KOSPalette.burgundy, KOSPalette.gold]),
-        Tile(symbol: "sun.max.fill", colors: [KOSPalette.rosewood, KOSPalette.champagne]),
-        Tile(symbol: "star.fill", colors: [KOSPalette.ink, KOSPalette.wine]),
-        Tile(symbol: "music.note", colors: [KOSPalette.gold, KOSPalette.wine]),
-        Tile(symbol: "camera.macro", colors: [KOSPalette.wine, KOSPalette.gold]),
-        Tile(symbol: "heart.fill", colors: [KOSPalette.rosewood, KOSPalette.burgundy]),
-        Tile(symbol: "crown.fill", colors: [KOSPalette.champagne, KOSPalette.rosewood]),
-        Tile(symbol: "headphones", colors: [KOSPalette.ink, KOSPalette.gold])
-    ]
-
-    private let columns = Array(
-        repeating: GridItem(.flexible(), spacing: 3),
-        count: 3
-    )
-
     var body: some View {
         ScrollView {
             VStack(spacing: 14) {
                 VStack(spacing: 4) {
-                    Text("KOS Essence")
+                    Text(appName)
                         .font(.system(size: 34, weight: .bold, design: .serif))
                         .foregroundStyle(KOSPalette.wine)
-
+                        .minimumScaleFactor(0.7)
+                        .lineLimit(1)
                     Text("Un universo de música, estilo y evolución")
                         .font(.system(size: 15, design: .serif))
                         .foregroundStyle(KOSPalette.rosewood)
                 }
                 .padding(.top, 8)
 
-                LazyVGrid(columns: columns, spacing: 3) {
-                    ForEach(tiles) { tile in
-                        ZStack {
-                            LinearGradient(
-                                colors: tile.colors,
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-
-                            Image(systemName: tile.symbol)
-                                .font(.system(size: 30, weight: .ultraLight))
-                                .foregroundStyle(KOSPalette.champagne)
-                        }
-                        .aspectRatio(1, contentMode: .fit)
-                    }
-                }
-                .clipShape(RoundedRectangle(cornerRadius: 18))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 18)
-                        .stroke(KOSPalette.gold.opacity(0.6), lineWidth: 1)
-                )
-                .padding(.horizontal, 20)
+                HeroImage()
 
                 Text("Selecciona lo que deseas conocer")
                     .font(.system(size: 16, weight: .bold))
@@ -175,22 +135,16 @@ private struct HomeView: View {
                                 Image(systemName: section.symbol)
                                     .font(.system(size: 18, weight: .medium))
                                     .frame(width: 28)
-
                                 Text(section.title)
                                     .font(.system(size: 17, weight: .semibold))
-
                                 Spacer()
-
                                 Image(systemName: "chevron.right")
                                     .font(.system(size: 15, weight: .semibold))
                             }
                             .foregroundStyle(.white)
                             .padding(.horizontal, 16)
                             .frame(height: 52)
-                            .background(
-                                section.color,
-                                in: RoundedRectangle(cornerRadius: 14)
-                            )
+                            .background(section.color, in: RoundedRectangle(cornerRadius: 14))
                         }
                     }
                 }
@@ -202,7 +156,29 @@ private struct HomeView: View {
     }
 }
 
-// MARK: - Pantalla de detalle
+// MARK: - Imagen principal
+// Usa la imagen "kos_principal" de Assets; si no existe, muestra un degradado
+private struct HeroImage: View {
+    var body: some View {
+        Color.clear
+            .frame(height: 350)
+            .overlay {
+                if UIImage(named: "kos_principal") != nil {
+                    Image("kos_principal")
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    LinearGradient(colors: [KOSPalette.wine, KOSPalette.rosewood, KOSPalette.gold],
+                                   startPoint: .topLeading, endPoint: .bottomTrailing)
+                }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 18))
+            .overlay(RoundedRectangle(cornerRadius: 18).stroke(KOSPalette.gold.opacity(0.6), lineWidth: 1))
+            .padding(.horizontal, 20)
+    }
+}
+
+// MARK: - Detalle
 private struct DetailView: View {
     let section: KOSSection
     let goHome: () -> Void
@@ -218,6 +194,13 @@ private struct DetailView: View {
                 Text(section.title)
                     .font(.system(size: 34, weight: .bold, design: .serif))
                     .foregroundStyle(KOSPalette.ink)
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.7)
+                    .padding(.horizontal, 24)
+
+                if section == .essence {
+                    PerfumeCard()
+                }
 
                 VStack(alignment: .leading, spacing: 14) {
                     ForEach(section.paragraphs, id: \.self) { text in
@@ -230,6 +213,10 @@ private struct DetailView: View {
                 .padding(.horizontal, 24)
                 .padding(.top, 4)
 
+                if section == .canciones {
+                    SongList()
+                }
+
                 Button(action: goHome) {
                     HStack(spacing: 10) {
                         Image(systemName: "arrow.left")
@@ -239,20 +226,77 @@ private struct DetailView: View {
                     .foregroundStyle(KOSPalette.ink)
                     .frame(maxWidth: .infinity)
                     .frame(height: 48)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(KOSPalette.ink.opacity(0.6), lineWidth: 1)
-                    )
+                    .overlay(RoundedRectangle(cornerRadius: 12).stroke(KOSPalette.ink.opacity(0.6), lineWidth: 1))
                 }
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)
             }
         }
         .background(Color.white.ignoresSafeArea())
-        .toolbarBackground(Color.white, for: .navigationBar)
-        .toolbarBackground(.visible, for: .navigationBar)
         .navigationTitle(section.title)
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+// MARK: - Lista de canciones
+private struct SongList: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            ForEach(Array(featuredSongs.enumerated()), id: \.offset) { index, song in
+                HStack(spacing: 14) {
+                    Text("\(index + 1)")
+                        .font(.system(size: 14, weight: .semibold, design: .serif))
+                        .foregroundStyle(KOSPalette.gold)
+                        .frame(width: 24)
+                    Text(song)
+                        .font(.system(size: 17, weight: .medium, design: .serif))
+                        .foregroundStyle(KOSPalette.wine)
+                    Spacer()
+                    Image(systemName: "music.note")
+                        .foregroundStyle(KOSPalette.rosewood)
+                }
+                .padding(.horizontal, 16)
+                .frame(height: 52)
+
+                if index < featuredSongs.count - 1 {
+                    Rectangle().fill(KOSPalette.gold.opacity(0.35)).frame(height: 1).padding(.horizontal, 16)
+                }
+            }
+        }
+        .background(KOSPalette.ivory, in: RoundedRectangle(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(KOSPalette.gold.opacity(0.5), lineWidth: 1))
+        .padding(.horizontal, 24)
+    }
+}
+
+// MARK: - Tarjeta de perfume
+// Usa la imagen "chaos_essence" de Assets; si no existe, muestra un degradado
+private struct PerfumeCard: View {
+    var body: some View {
+        ZStack {
+            if UIImage(named: "chaos_essence") != nil {
+                Image("chaos_essence")
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                LinearGradient(colors: [KOSPalette.wine, KOSPalette.rosewood, KOSPalette.gold],
+                               startPoint: .topLeading, endPoint: .bottomTrailing)
+                VStack(spacing: 10) {
+                    Image(systemName: "drop.fill")
+                        .font(.system(size: 54, weight: .ultraLight))
+                        .foregroundStyle(KOSPalette.champagne)
+                    Rectangle().fill(KOSPalette.gold).frame(width: 60, height: 1)
+                    Text("CHAOS ESSENCE")
+                        .font(.system(size: 16, weight: .medium, design: .serif))
+                        .tracking(5)
+                        .foregroundStyle(KOSPalette.champagne)
+                }
+            }
+        }
+        .frame(height: 265)
+        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .overlay(RoundedRectangle(cornerRadius: 18).stroke(KOSPalette.gold.opacity(0.6), lineWidth: 1))
+        .padding(.horizontal, 24)
     }
 }
 
